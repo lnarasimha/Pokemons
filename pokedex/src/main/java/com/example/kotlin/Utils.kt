@@ -1,12 +1,11 @@
 package com.example.kotlin
 
 import android.net.Uri
-import com.example.kotlin.data.PokemonListRepository
 
 fun getPageFromUrl(urlString: String?): Int? {
     return urlString?.let {
         Uri.parse(it).getQueryParameter("offset")?.toInt()?.div(
-            PokemonListRepository.PER_PAGE
+            20
         )
     }
 }

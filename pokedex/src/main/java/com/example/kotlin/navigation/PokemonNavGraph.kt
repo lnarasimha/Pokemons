@@ -6,8 +6,8 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.kotlin.presentationnew.PokemonDetailsScreen
-import com.example.kotlin.presentationnew.PokemonListScreen
+import com.example.kotlin.presentation.PokemonDetailsScreen
+import com.example.kotlin.presentation.PokemonListScreen
 
 @Composable
 fun PokemonNavGraph(
@@ -32,8 +32,9 @@ fun PokemonNavGraph(
             arguments = listOf(navArgument("pokemonName") {
                 type = NavType.StringType
             })
-        ) {
-            PokemonDetailsScreen()
+        ) { navBackStackEntry ->
+            val pokemonName = navBackStackEntry.arguments?.getString("pokemonName") ?: ""
+            PokemonDetailsScreen(pokemonName = pokemonName)
         }
     }
 }
